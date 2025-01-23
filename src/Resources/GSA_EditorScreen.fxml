@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="1000.0" stylesheets="@GSA_StyleSheet.css"
+      xmlns="http://javafx.com/javafx/17" fx:controller="Controllers.GSA_EditorController">
+    <children>
+        <BorderPane prefHeight="800.0" prefWidth="200.0">
+            <bottom>
+                <ToolBar prefHeight="44.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <Label id="footertext" fx:id="LocalizationLabel" text="English Localization"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Button id="whitebutton" fx:id="BackButton" maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false" onAction="#BackClicked" text="Back">
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </Button>
+                        <Separator prefWidth="5.0" visible="false"/>
+                        <Button id="whitebutton" fx:id="ExitButton" mnemonicParsing="false"
+                                onAction="#onExitButtonClick" text="Exit"/>
+                    </items>
+                    <padding>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                    </padding>
+                </ToolBar>
+            </bottom>
+            <top>
+                <ToolBar prefHeight="40.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <Label id="header" fx:id="GSALabel"
+                               text="Alanath Publishing Global Scheduling Application - View Editors">
+                            <padding>
+                                <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                            </padding>
+                        </Label>
+                    </items>
+                </ToolBar>
+            </top>
+            <center>
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <BorderPane prefHeight="415.0" prefWidth="929.0">
+                            <top>
+                                <ToolBar id="centertoolbar" prefHeight="43.0" prefWidth="328.0"
+                                         BorderPane.alignment="CENTER">
+                                    <items>
+                                        <Pane HBox.hgrow="ALWAYS"/>
+                                        <TextField id="searchbox" fx:id="SearchField" promptText="Search..."/>
+                                        <Separator prefWidth="5.0" visible="false"/>
+                                        <Button id="whitebutton" fx:id="SearchButton" mnemonicParsing="false"
+                                                onAction="#searchClicked" text="Search"/>
+                                    </items>
+                                    <padding>
+                                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                                    </padding>
+                                </ToolBar>
+                            </top>
+                            <center>
+                                <TableView fx:id="PersonalInformationTable" onMouseClicked="#personSelected"
+                                           BorderPane.alignment="CENTER">
+                                    <columns>
+                                        <TableColumn fx:id="IDColumn" prefWidth="50.0" text="ID"/>
+                                        <TableColumn fx:id="NameColumn" prefWidth="150.0" text="Name"/>
+                                        <TableColumn fx:id="AddressColumn" prefWidth="175.0" text="Address"/>
+                                        <TableColumn fx:id="RegionColumn" prefWidth="100.0" text="Region"/>
+                                        <TableColumn fx:id="CountryColumn" prefWidth="100.0" text="Country"/>
+                                        <TableColumn fx:id="PostalCodeColumn" minWidth="0.0" prefWidth="100.0"
+                                                     text="Postal Code"/>
+                                        <TableColumn fx:id="PhoneColumn" prefWidth="100.0" text="Phone"/>
+                                        <TableColumn fx:id="EmailColumn" prefWidth="181.3333740234375" text="Email"/>
+                                    </columns>
+                                </TableView>
+                            </center>
+                        </BorderPane>
+                        <GridPane alignment="CENTER" prefHeight="225.0" prefWidth="897.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0"
+                                                   prefWidth="120.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="30.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0"
+                                                   prefWidth="120.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="30.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <Label text="ID"/>
+                                <Label fx:id="NameLabel" text="Name" GridPane.rowIndex="1"/>
+                                <Label fx:id="AddressLabel" text="Address" GridPane.rowIndex="2"/>
+                                <Label fx:id="PostalCodeLabel" text="Postal Code" GridPane.rowIndex="3"/>
+                                <Label fx:id="CountryLabel" text="Country" GridPane.rowIndex="4"/>
+                                <TextField fx:id="IDText" disable="true" maxWidth="1.7976931348623157E308"
+                                           GridPane.columnIndex="1"/>
+                                <TextField fx:id="NameText" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1"
+                                           GridPane.rowIndex="1"/>
+                                <TextField fx:id="AddressText" maxWidth="1.7976931348623157E308"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <TextField fx:id="PostalCodeText" maxWidth="1.7976931348623157E308"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Label fx:id="PhoneLabel" text="Phone" GridPane.columnIndex="3"/>
+                                <Label fx:id="DateCreatedLabel" text="Date Created" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="2"/>
+                                <Label fx:id="CreatedByLabel" text="Created By" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="3"/>
+                                <Label fx:id="LastUpdatedLabel" text="Last Updated" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="4"/>
+                                <Label fx:id="UpdatedByLabel" text="Updated By" GridPane.columnIndex="3"
+                                       GridPane.rowIndex="5"/>
+                                <TextField fx:id="UpdatedByText" disable="true" maxWidth="1.7976931348623157E308"
+                                           GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+                                <Button fx:id="AddButton" alignment="CENTER" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" onAction="#AddEditorClicked" text="Add Editor"
+                                        GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
+                                <Button fx:id="ModButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                        onAction="#ModifyEditorClicked" text="Modify Editor" GridPane.columnIndex="6"
+                                        GridPane.halignment="CENTER" GridPane.rowIndex="3"/>
+                                <Button fx:id="DeleteButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                        onAction="#DeleteEditorClicked" text="Delete Editor" GridPane.columnIndex="6"
+                                        GridPane.halignment="CENTER" GridPane.rowIndex="4"/>
+                                <ChoiceBox fx:id="CountryDropDown" maxWidth="1.7976931348623157E308"
+                                           onAction="#updateDivisionsByCountry" prefWidth="150.0"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <TextField fx:id="PhoneText" GridPane.columnIndex="4"/>
+                                <TextField fx:id="DateCreatedText" disable="true" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="2"/>
+                                <TextField fx:id="CreatedByText" disable="true" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="3"/>
+                                <TextField fx:id="LastUpdatedText" disable="true" GridPane.columnIndex="4"
+                                           GridPane.rowIndex="4"/>
+                                <Button fx:id="UnselectButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                        onAction="#unselect" text="Unselect Editor" GridPane.columnIndex="6"
+                                        GridPane.rowIndex="1"/>
+                                <Label fx:id="RegionLabel" text="Region" GridPane.rowIndex="5"/>
+                                <ChoiceBox fx:id="RegionDropDown" maxWidth="1.7976931348623157E308" prefWidth="150.0"
+                                           GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                                <Label fx:id="EmailLabel" text="Email" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                                <TextField fx:id="EmailText" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+                            </children>
+                        </GridPane>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </padding>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</VBox>

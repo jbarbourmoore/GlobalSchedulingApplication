@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="1000.0" stylesheets="@GSA_StyleSheet.css"
+      xmlns="http://javafx.com/javafx/17" fx:controller="Controllers.GSA_ReportsController">
+    <children>
+        <BorderPane prefHeight="800.0" prefWidth="200.0">
+            <bottom>
+                <ToolBar prefHeight="44.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <Label id="footertext" fx:id="LocalizationLabel" text="English Localization"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Button id="whitebutton" fx:id="BackButton" maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false" onAction="#BackClicked" text="Back">
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </Button>
+                        <Separator prefWidth="5.0" visible="false"/>
+                        <Button id="whitebutton" fx:id="ExitButton" mnemonicParsing="false"
+                                onAction="#onExitButtonClick" text="Exit"/>
+                    </items>
+                    <padding>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                    </padding>
+                </ToolBar>
+            </bottom>
+            <top>
+                <ToolBar prefHeight="40.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <Label id="header" fx:id="GSALabel"
+                               text="Alanath Publishing Global Scheduling Application - View Reports">
+                            <padding>
+                                <Insets bottom="5.0" left="20.0" right="20.0" top="5.0"/>
+                            </padding>
+                        </Label>
+                    </items>
+                </ToolBar>
+            </top>
+            <center>
+                <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                    </padding>
+                    <children>
+                        <TabPane prefHeight="704.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+                            <tabs>
+                                <Tab fx:id="appointmentsByEditorTab" closable="false" text="Appointments By Editor">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="680.0" prefWidth="994.0">
+                                            <children>
+                                                <VBox layoutX="6.0" prefHeight="613.0" prefWidth="950.0" spacing="20.0"
+                                                      style="-fx-background-color: #EAEAF9; -fx-background-radius: 0px 15px 0px 0px;">
+                                                    <children>
+                                                        <ToolBar id="centertoolbar" prefHeight="44.0" prefWidth="889.0">
+                                                            <items>
+                                                                <Label id="footertext" fx:id="WhichEditorLabel"
+                                                                       text="Which Editor?"/>
+                                                                <Separator prefWidth="5.0" visible="false"/>
+                                                                <ChoiceBox fx:id="EditorDropDown" prefHeight="25.0"
+                                                                           prefWidth="223.0"/>
+                                                                <Separator layoutX="164.0" layoutY="10.0"
+                                                                           prefWidth="5.0" visible="false"/>
+                                                                <Button id="whitebutton" fx:id="SubmitEditorButton"
+                                                                        mnemonicParsing="false"
+                                                                        onAction="#editorSelected" text="Submit">
+                                                                    <padding>
+                                                                        <Insets bottom="5.0" left="20.0" right="20.0"
+                                                                                top="5.0"/>
+                                                                    </padding>
+                                                                </Button>
+                                                                <Pane HBox.hgrow="ALWAYS"/>
+                                                                <Button id="whitebutton" fx:id="exportEditorsAppsButton"
+                                                                        layoutX="457.0" layoutY="10.0"
+                                                                        mnemonicParsing="false"
+                                                                        onAction="#exportEditorsAppointments"
+                                                                        text="Export Editor's Appointments">
+                                                                    <padding>
+                                                                        <Insets bottom="5.0" left="20.0" right="20.0"
+                                                                                top="5.0"/>
+                                                                    </padding>
+                                                                </Button>
+                                                            </items>
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="20.0" right="20.0"
+                                                                        top="5.0"/>
+                                                            </padding>
+                                                            <VBox.margin>
+                                                                <Insets/>
+                                                            </VBox.margin>
+                                                        </ToolBar>
+                                                        <TableView fx:id="Editor_ScheduleTable" prefHeight="529.0"
+                                                                   prefWidth="956.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="Editor_ScheduleTableIDColumn"
+                                                                             prefWidth="50.0" text="ID"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableTitleColumn"
+                                                                             prefWidth="125.0" text="Title"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableDesColumn"
+                                                                             prefWidth="150.0" text="Description"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableLocColumn"
+                                                                             minWidth="0.0" prefWidth="100.0"
+                                                                             text="Location"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableTypeColumn"
+                                                                             prefWidth="75.0" text="Type"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableAuthorColumn"
+                                                                             prefWidth="100.0" text="Author"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableEditorColumn"
+                                                                             prefWidth="100.0" text="Editor"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableStartColumn"
+                                                                             prefWidth="75.0" text="Start"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableEndColumn"
+                                                                             prefWidth="75.0" text="End"/>
+                                                                <TableColumn fx:id="Editor_ScheduleTableEmployeeColumn"
+                                                                             prefWidth="95.0" text="Employee"/>
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="20.0"/>
+                                                    </padding>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="appointmentsByAuthorTab" closable="false" text="Appointments By Author">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="680.0" prefWidth="994.0">
+                                            <children>
+                                                <VBox layoutX="6.0" prefHeight="613.0" prefWidth="950.0" spacing="20.0"
+                                                      style="-fx-background-color: #EAEAF9; -fx-background-radius: 0px 15px 0px 0px;">
+                                                    <children>
+                                                        <ToolBar id="centertoolbar" prefHeight="44.0" prefWidth="889.0">
+                                                            <items>
+                                                                <Label id="footertext" fx:id="WhichAuthorLabel"
+                                                                       text="Which Author?"/>
+                                                                <Separator prefWidth="5.0" visible="false"/>
+                                                                <ChoiceBox fx:id="AuthorsDropdown" prefHeight="25.0"
+                                                                           prefWidth="223.0"/>
+                                                                <Separator layoutX="164.0" layoutY="10.0"
+                                                                           prefWidth="5.0" visible="false"/>
+                                                                <Button id="whitebutton" fx:id="SubmitAuthorButton"
+                                                                        mnemonicParsing="false"
+                                                                        onAction="#authorSelected" text="Submit">
+                                                                    <padding>
+                                                                        <Insets bottom="5.0" left="20.0" right="20.0"
+                                                                                top="5.0"/>
+                                                                    </padding>
+                                                                </Button>
+                                                                <Pane HBox.hgrow="ALWAYS"/>
+                                                                <Button id="whitebutton" fx:id="exportAuthorAppsButton"
+                                                                        mnemonicParsing="false"
+                                                                        onAction="#exportAuthorAppsClicked"
+                                                                        text="Export Author's Appointments"/>
+                                                            </items>
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="20.0" right="20.0"
+                                                                        top="5.0"/>
+                                                            </padding>
+                                                            <VBox.margin>
+                                                                <Insets/>
+                                                            </VBox.margin>
+                                                        </ToolBar>
+                                                        <TableView fx:id="ScheduleTable" prefHeight="524.0"
+                                                                   prefWidth="1009.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="ScheduleTableIDColumn"
+                                                                             prefWidth="50.0" text="ID"/>
+                                                                <TableColumn fx:id="ScheduleTableTitleColumn"
+                                                                             prefWidth="125.0" text="Title"/>
+                                                                <TableColumn fx:id="ScheduleTableDesColumn"
+                                                                             prefWidth="150.0" text="Description"/>
+                                                                <TableColumn fx:id="ScheduleTableLocColumn"
+                                                                             prefWidth="100.0" text="Location"/>
+                                                                <TableColumn fx:id="ScheduleTableTypeColumn"
+                                                                             prefWidth="75.0" text="Type"/>
+                                                                <TableColumn fx:id="ScheduleTableAuthorColumn"
+                                                                             prefWidth="100.0" text="Author"/>
+                                                                <TableColumn fx:id="ScheduleTableEditorColumn"
+                                                                             prefWidth="100.0" text="Editor"/>
+                                                                <TableColumn fx:id="ScheduleTableStartColumn"
+                                                                             prefWidth="75.0" text="Start"/>
+                                                                <TableColumn fx:id="ScheduleTableEndColumn"
+                                                                             prefWidth="75.0" text="End"/>
+                                                                <TableColumn fx:id="ScheduleTableEmployeeColumn"
+                                                                             prefWidth="95.0" text="Employee"/>
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="20.0"/>
+                                                    </padding>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="appointmentCountsTab" closable="false" text="Appointments Count">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="643.0"
+                                                    prefWidth="1000.0">
+                                            <children>
+                                                <VBox layoutX="5.0" prefHeight="613.0" prefWidth="951.0" spacing="20.0"
+                                                      style="-fx-background-color: #EAEAF9; -fx-background-radius: 0px 15px 0px 0px;">
+                                                    <padding>
+                                                        <Insets left="100.0" right="100.0" top="20.0"/>
+                                                    </padding>
+                                                    <children>
+                                                        <GridPane prefHeight="30.0" prefWidth="816.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <RadioButton fx:id="CountByMonthRadio"
+                                                                             maxWidth="1.7976931348623157E308"
+                                                                             mnemonicParsing="false"
+                                                                             onAction="#CountAppointmentsRadioPressed"
+                                                                             text="By Month" GridPane.columnIndex="3">
+                                                                    <padding>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </padding>
+                                                                    <GridPane.margin>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </GridPane.margin>
+                                                                    <toggleGroup>
+                                                                        <ToggleGroup fx:id="AppointmentCountChoice"/>
+                                                                    </toggleGroup>
+                                                                </RadioButton>
+                                                                <RadioButton fx:id="CountByTypeRadio"
+                                                                             maxWidth="1.7976931348623157E308"
+                                                                             mnemonicParsing="false"
+                                                                             onAction="#CountAppointmentsRadioPressed"
+                                                                             selected="true" text="By Type"
+                                                                             toggleGroup="$AppointmentCountChoice"
+                                                                             GridPane.columnIndex="2">
+                                                                    <padding>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </padding>
+                                                                    <GridPane.margin>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </GridPane.margin>
+                                                                </RadioButton>
+                                                                <RadioButton fx:id="CountByEditorRadio"
+                                                                             maxWidth="1.7976931348623157E308"
+                                                                             mnemonicParsing="false"
+                                                                             onAction="#CountAppointmentsRadioPressed"
+                                                                             text="By Editor"
+                                                                             toggleGroup="$AppointmentCountChoice"
+                                                                             GridPane.columnIndex="1">
+                                                                    <padding>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </padding>
+                                                                    <GridPane.margin>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </GridPane.margin>
+                                                                </RadioButton>
+                                                                <RadioButton fx:id="CountByAuthorRadio"
+                                                                             maxWidth="1.7976931348623157E308"
+                                                                             mnemonicParsing="false"
+                                                                             onAction="#CountAppointmentsRadioPressed"
+                                                                             selected="true" text="By Author"
+                                                                             toggleGroup="$AppointmentCountChoice">
+                                                                    <padding>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </padding>
+                                                                    <GridPane.margin>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </GridPane.margin>
+                                                                </RadioButton>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets bottom="5.0" top="5.0"/>
+                                                            </VBox.margin>
+                                                        </GridPane>
+                                                        <TableView fx:id="AppointmentCountTable" prefHeight="441.0"
+                                                                   prefWidth="800.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="AppointmentCategoryColumn"
+                                                                             prefWidth="375.0"
+                                                                             text="Appointment's Author"/>
+                                                                <TableColumn fx:id="AppointmentCountColumn"
+                                                                             prefWidth="370.0"
+                                                                             text="Total Number of Appointments"/>
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab fx:id="peopleByCountryTab" closable="false" text="People By Country">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                                    prefWidth="1000.0">
+                                            <children>
+                                                <VBox layoutX="6.0" prefHeight="613.0" prefWidth="945.0" spacing="20.0"
+                                                      style="-fx-background-color: #EAEAF9; -fx-background-radius: 0px 15px 0px 0px;">
+                                                    <padding>
+                                                        <Insets left="100.0" right="100.0" top="20.0"/>
+                                                    </padding>
+                                                    <children>
+                                                        <GridPane prefHeight="30.0" prefWidth="816.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="100.0"/>
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                            <children>
+                                                                <RadioButton fx:id="EditorsByCountry"
+                                                                             maxWidth="1.7976931348623157E308"
+                                                                             mnemonicParsing="false"
+                                                                             onAction="#CountPeopleRadioPressed"
+                                                                             selected="false" text="Editors"
+                                                                             GridPane.columnIndex="2">
+                                                                    <padding>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </padding>
+                                                                    <GridPane.margin>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </GridPane.margin>
+                                                                    <toggleGroup>
+                                                                        <ToggleGroup fx:id="PeopleCountChoice"/>
+                                                                    </toggleGroup>
+                                                                </RadioButton>
+                                                                <RadioButton fx:id="AuthorsByCountry"
+                                                                             maxWidth="1.7976931348623157E308"
+                                                                             mnemonicParsing="false"
+                                                                             onAction="#CountPeopleRadioPressed"
+                                                                             selected="true" text="Authors"
+                                                                             toggleGroup="$PeopleCountChoice"
+                                                                             GridPane.columnIndex="1">
+                                                                    <padding>
+                                                                        <Insets left="10.0" right="10.0"/>
+                                                                    </padding>
+                                                                </RadioButton>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets bottom="5.0" top="5.0"/>
+                                                            </VBox.margin>
+                                                        </GridPane>
+                                                        <TableView fx:id="LocationTable" prefHeight="441.0"
+                                                                   prefWidth="800.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="LocationColumn" prefWidth="370.0"
+                                                                             text="Author's Country"/>
+                                                                <TableColumn fx:id="PeopleCountColumn" prefWidth="370.0"
+                                                                             text="Total Number of Authors"/>
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</VBox>
