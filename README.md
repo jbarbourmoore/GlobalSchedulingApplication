@@ -8,6 +8,8 @@ The application is a scheduling utility for a publishing company. It uses a data
 
 It provides a GUI interface built in JavaFX for the user to interact with the database.
 
+The employee usernames for the system are stored in the mySQL database, however the passwords are stored as salted hashes using SHA-256.
+
 ## Getting Started
 
 To use the Global Scheduling Application, you must first have a few things set up on your computer. The 
@@ -34,6 +36,11 @@ successfully.
 7. Set default target schema to 'globalschedulingapplication'. 
 8. Make sure 'Dump structure and Data' is selected in the dropdown. 
 9. Click 'Start Import.'
+
+### Environment Variables
+The application is setup to pull the database credentials from the system's environment variables.
+* The key for the database username is "GSA_DB_User"
+* The key for the database password is "GSA_DB_Password"
 
 ### Running the Application
 
