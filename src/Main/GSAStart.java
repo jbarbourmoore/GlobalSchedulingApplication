@@ -34,7 +34,7 @@ public class GSAStart extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GSAStart.class.getResource("/Resources/GSA_LoginScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GSAStart.class.getResource("/GSA_LoginScreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 400);
         stage.setTitle("Global Scheduling Application - Login View");
         stage.setScene(scene);

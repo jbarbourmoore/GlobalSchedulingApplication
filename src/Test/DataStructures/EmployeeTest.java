@@ -13,7 +13,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class EmployeeTest {
 
     private static final String username = "username";
-    private static final String password = "password";
+    private static final String password = "testpass";
+    private static final String salt = "227a142b";
+    private static final String saltedHash = "18827e010f4df2f7940cefe8f3cbfc07f00cd8350f48ca2c0c1ba161e244b72b";
     static private final int ID = 1;
     private static final String name = "Name";
     private static final String address = "address";
@@ -31,16 +33,11 @@ class EmployeeTest {
     @BeforeAll
     static void beforeAll() {
         DatabaseConnectionManager.makeConnection();
-        testEmployee = new Employee(ID, name, address, postal_code, phone, email, create_Date, created_By, last_Update, last_Updated_By, region_ID, username, password);
+        testEmployee = new Employee(ID, name, address, postal_code, phone, email, create_Date, created_By, last_Update, last_Updated_By, region_ID, username);
     }
 
     @Test
     void getUsername() {
         assertEquals(username, testEmployee.getUsername());
-    }
-
-    @Test
-    void getPassword() {
-        assertEquals(password, testEmployee.getPassword());
     }
 }

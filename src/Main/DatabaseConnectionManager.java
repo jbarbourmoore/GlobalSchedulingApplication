@@ -45,17 +45,19 @@ public class DatabaseConnectionManager {
     private static final String driver = "com.mysql.cj.jdbc.Driver"; // Driver reference
 
     /**
-     * A string containing the value for username.
+     * A string containing the value for the username for the database credentials.
+     * Value is fetched from environment variable with "GSA_DB_User" Key
      */
-    private static final String userName = ""; // Username
+    private static String databaseUsername = ""; // Username
 
     /**
-     * A string containing the value for password.
+     * A string containing the value for password for the database credentials.
+     * Value is fetched from environment variable with "GSA_DB_Password" Key
      */
-    private static final String password = ""; // Password
+    private static String databasePassword = ""; // Password
 
     /**
-     * A string containing the value for the current username.
+     * A string containing the value for the current user logged into the system.
      */
     private static String currentUser = "";
 
@@ -70,14 +72,19 @@ public class DatabaseConnectionManager {
     private static PreparedStatement preparedStatement;
 
     /**
-     * This method meakes a connection with the database.
+     * This method makes a connection with the database.
+     * The Username and Password for the database connection are pulled from the System Environment Variables
+     * GSA_DB_User and GSA_DB_Password
      */
     public static void makeConnection() {
 
         try {
             Class.forName(driver); // Locate Driver
-            //password = Details.getPassword(); // Assign password
-            connection = DriverManager.getConnection(jdbcUrl, userName, password); // reference Connection object
+
+            databaseUsername = System.getenv().get("GSA_DB_User");
+            databasePassword = System.getenv().get("GSA_DB_Password");
+
+            connection = DriverManager.getConnection(jdbcUrl, databaseUsername, databasePassword); // reference Connection object
             System.out.println("Connection successful!");
         } catch (ClassNotFoundException e) {
             System.out.println("Error:" + e.getMessage());

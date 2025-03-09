@@ -38,7 +38,7 @@ public class EmployeeDatabaseAccess {
             Timestamp last_Update = resultSet.getTimestamp("Last_Update");
             String last_Updated_By = resultSet.getString("Last_Updated_By");
             int region_ID = resultSet.getInt("Region_ID");
-            Employee employee = new Employee(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"), resultSet.getString("Salted_Hash"), resultSet.getString("Salt"));
+            Employee employee = new Employee(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"));
             usersObservableList.add(employee);
         }
         return usersObservableList;
@@ -63,7 +63,7 @@ public class EmployeeDatabaseAccess {
             Timestamp last_Update = resultSet.getTimestamp("Last_Update");
             String last_Updated_By = resultSet.getString("Last_Updated_By");
             int region_ID = resultSet.getInt("Region_ID");
-            employee = new Employee(employee_ID, resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"),resultSet.getString("Salted_Hash"), resultSet.getString("Salt"));
+            employee = new Employee(employee_ID, resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"));
         }
         return employee;
     }
@@ -71,22 +71,28 @@ public class EmployeeDatabaseAccess {
     /**
      * This method checks if the username and password entered are valid.
      *
+     * It fetches the salt value from the database and uses that to generate the sha-256 has for the password.
+     * This generated hash is then compared with the value in the database to determine if the password is correct.
+     *
      * @param username the inputted username
      * @param password the inputted password
      * @return boolean that is true if the credentials are valid
      */
     public static boolean checkUserAndPassword(String username, String password) {
-        String stringQuery = "SELECT User_Name, Salted_Hash, Salt FROM employees WHERE User_Name = '" + username +"'"           ;
+        String stringQuery = "SELECT User_Name, Salt FROM employees WHERE User_Name = '" + username +"'"           ;
         try {
             PreparedStatement preparedStatement = DatabaseConnectionManager.getConnection().prepareStatement(stringQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                String retrievedUsername = resultSet.getString("User_Name");
-                String retrievedSaltedHash = resultSet.getString("Salted_Hash");
                 String salt = resultSet.getString("Salt");
                 String generatedSaltedHash = HelperMethods.generateHash(password, salt);
-                if (retrievedUsername.equals(username) && retrievedSaltedHash.equals(generatedSaltedHash)) {
-                    return true;
+                String checkHashQuery = "SELECT User_Name FROM employees WHERE User_Name = '" + username +"' AND Salted_Hash = '" + generatedSaltedHash + "'";           ;
+                PreparedStatement preparedCheckHashStatement = DatabaseConnectionManager.getConnection().prepareStatement(checkHashQuery);
+                ResultSet resultCheckHashSet = preparedCheckHashStatement.executeQuery();
+                if (resultCheckHashSet.next()) {
+                    if(resultCheckHashSet.getString("User_Name").equals(username)){
+                        return true;
+                    }
                 }
             }
         } catch (SQLException ignored) {
