@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `globalschedulingapplication` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `globalschedulingapplication`;
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: globalschedulingapplication
+-- Host: localhost    Database: globalschedulingapplication
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.41
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -56,7 +56,7 @@ CREATE TABLE `appointments` (
 
 LOCK TABLES `appointments` WRITE;
 /*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
-INSERT INTO `appointments` VALUES (1,'Nebula of Bonva','The Time Is Running Out! Think About These 8 Ways To Change Your Book','Conference Room A','Planning Session','2023-02-26 17:00:00','2023-02-26 18:00:00','2023-02-02 00:00:00','admin','2023-02-08 23:36:48','admin',1,6,2),(2,'Light Jetpack','The 8 Best Things About Book','Conference Room A','De-Briefing','2023-03-03 19:19:00','2023-03-03 20:20:00','2023-02-02 00:00:00','admin','2023-02-02 00:00:00','admin',6,5,3),(3,'Hubble of Honor','The 8 Biggest Book Mistakes You Can Easily Avoid','Conference Room B','Planning Session','2023-03-21 12:00:00','2023-03-21 13:00:00','2023-02-02 00:00:00','admin','2023-02-09 14:23:58','admin',2,3,3),(4,'Autonomous Moon','The 8 Most Successful Book Companies In Region','Conference Room D','Planning Session','2023-02-23 22:00:00','2023-02-24 01:00:00','2023-02-02 03:41:00','admin','2023-02-08 16:35:49','admin',2,3,5),(5,'The Woman who went to Tepnt','Think Your Book Is Safe? 8 Ways You Can Lose It Today','Conference Room A','Planning Session','2023-03-30 18:50:00','2023-03-30 19:50:00','2023-03-02 01:46:00','admin','2023-02-08 16:49:18','admin',5,6,3),(6,'Moon of Vortex','Thinking About Book? 8 Reasons Why It\'s Time To Stop!','Conference Room C','De-Briefing','2023-02-16 21:00:00','2023-02-16 23:00:00','2023-03-02 16:03:00','admin','2023-02-09 14:24:19','admin',5,1,4),(7,'4931: Hubble Glory','8 Places To Get Deals On Book','Conference Room B','Planning Session','2023-03-24 16:30:00','2023-03-24 19:30:00','2023-02-02 00:00:00','admin','2023-02-09 14:24:57','admin',1,3,3),(8,'Exploring Janchia','8 Reasons People Laugh About Your Book','Conference Room A','Celebration','2023-03-21 13:45:00','2023-03-21 14:45:00','2023-02-02 12:23:00','admin','2023-02-09 14:25:41','admin',4,1,1),(9,'5014: Mars Knights','8 Amazing Book Hacks','Conference Room D','Planning Session','2023-04-19 14:00:00','2023-04-19 15:00:00','2023-02-02 16:46:00','admin','2023-02-09 14:23:31','admin',5,2,5),(10,'Sinking Moon','8 Awesome Tips About Book From Unlikely Sources','Conference Room B','De-Briefing','2023-02-15 21:49:00','2023-02-15 22:49:00','2023-02-02 15:12:00','admin','2023-02-09 14:26:19','admin',4,3,1),(11,'Waking up on Xenangolia','8 Creative Ways You Can Improve Your Book','Conference Room A','Planning Session','2023-02-12 18:30:00','2023-02-12 19:00:00','2023-02-02 00:00:00','admin','2023-02-09 14:26:39','admin',3,5,5),(12,'A pocket guide to Tamon','8 Easy Steps To More Book Sales','Conference Room C','Celebration','2023-02-04 21:00:00','2023-02-04 22:00:00','2023-02-02 17:02:00','admin','2023-02-08 01:32:42','admin',2,4,3);
+INSERT INTO `appointments` VALUES (1,'Nebula of Bonva','The Time Is Running Out! Think About These 8 Ways To Change Your Book','Conference Room A','Planning Session','2023-02-26 17:00:00','2023-02-26 18:00:00','2023-02-02 00:00:00','admin','2023-02-08 23:36:48','admin',1,6,2),(2,'Light Jetpack','The 8 Best Things About Book','Conference Room A','De-Briefing','2023-03-03 19:19:00','2023-03-03 20:20:00','2023-02-02 00:00:00','admin','2023-02-02 00:00:00','admin',6,5,3),(3,'Hubble of Honor','The 8 Biggest Book Mistakes You Can Easily Avoid','Conference Room B','Planning Session','2023-03-21 12:00:00','2023-03-21 13:00:00','2023-02-02 00:00:00','admin','2023-02-09 14:23:58','admin',2,3,3),(4,'Autonomous Moon','The 8 Most Successful Book Companies In Region','Conference Room D','Planning Session','2023-02-23 22:00:00','2023-02-24 01:00:00','2023-02-02 03:41:00','admin','2023-02-08 16:35:49','admin',2,3,5),(5,'The Woman who went to Tepnt','Think Your Book Is Safe? 8 Ways You Can Lose It Today','Conference Room A','Planning Session','2023-03-30 18:50:00','2023-03-30 19:50:00','2023-03-02 01:46:00','admin','2023-02-08 16:49:18','admin',5,6,3),(6,'Moon of Vortex','Thinking About Book? 8 Reasons Why It\'s Time To Stop!','Conference Room C','De-Briefing','2023-02-16 21:00:00','2023-02-16 23:00:00','2023-03-02 16:03:00','admin','2023-02-09 14:24:19','admin',5,1,4),(7,'4931: Hubble Glory','8 Places To Get Deals On Book','Conference Room B','Planning Session','2025-01-23 00:25:00','2025-01-23 02:20:00','2023-02-02 00:00:00','admin','2025-01-23 00:13:14','admin',1,3,3),(8,'Exploring Janchia','8 Reasons People Laugh About Your Book','Conference Room A','Celebration','2023-03-21 13:45:00','2023-03-21 14:45:00','2023-02-02 12:23:00','admin','2023-02-09 14:25:41','admin',4,1,1),(9,'5014: Mars Knights','8 Amazing Book Hacks','Conference Room D','Planning Session','2023-04-19 14:00:00','2023-04-19 15:00:00','2023-02-02 16:46:00','admin','2023-02-09 14:23:31','admin',5,2,5),(10,'Sinking Moon','8 Awesome Tips About Book From Unlikely Sources','Conference Room B','De-Briefing','2023-02-15 21:49:00','2023-02-15 22:49:00','2023-02-02 15:12:00','admin','2023-02-09 14:26:19','admin',4,3,1),(11,'Waking up on Xenangolia','8 Creative Ways You Can Improve Your Book','Conference Room A','Planning Session','2023-02-12 18:30:00','2023-02-12 19:00:00','2023-02-02 00:00:00','admin','2023-02-09 14:26:39','admin',3,5,5),(12,'A pocket guide to Tamon','8 Easy Steps To More Book Sales','Conference Room C','Celebration','2023-02-04 21:00:00','2023-02-04 22:00:00','2023-02-02 17:02:00','admin','2023-02-08 01:32:42','admin',2,4,3);
 /*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +181,8 @@ CREATE TABLE `employees` (
   `Last_Updated_By` text NOT NULL,
   `Region_ID` int NOT NULL,
   `User_Name` text NOT NULL,
-  `Password` text NOT NULL,
+  `Salted_Hash` text NOT NULL,
+  `Salt` text NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID_UNIQUE` (`ID`),
   CONSTRAINT `fk_region_id_employee` FOREIGN KEY (`ID`) REFERENCES `regions` (`Region_ID`)
@@ -194,7 +195,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'Administrator','4874 Copperhead Road','6902','860-591-7525','admin@alanath.org','2021-09-10 13:14:00','script','2023-01-31 16:32:00','admin',12,'admin','admin'),(2,'Gabriela Jefferson','4413 Clousson Road','51034','712-880-1155','GabrielaJ23@alanath.org','2021-09-10 13:14:00','script','2021-09-10 17:14:00','script',103,'GabrielaJ23','pass1'),(3,'Nancy Winters','4947 Courtright Street','58577','701-460-9506','NancyW97@alanath.ord','2021-09-10 13:14:00','script','2021-09-10 17:14:00','script',52,'NancyW97','pass2'),(4,'Douglas Villegas','3934 Romrog Way','68801','308-201-5702','DouglasV12@alanath.org','2023-01-31 16:29:00','admin','2023-02-01 08:36:00','admin',12,'DouglasV12','pass3'),(5,'Shivam Thomas','4910 Cedar Lane','2143','617-629-5901','ShivamT76@alanath.org','2023-02-01 01:34:00','admin','2023-02-01 01:34:00','admin',23,'ShivamT76','pass4');
+INSERT INTO `employees` VALUES (1,'Administrator','4874 Copperhead Road','6902','860-591-7525','admin@alanath.org','2021-09-10 13:14:00','script','2023-01-31 16:32:00','admin',12,'admin','2361b048cd549716313e6e9ff8d67ac00a72961c147489b125c97ef73bb03808','7e32c033'),(2,'Gabriela Jefferson','4413 Clousson Road','51034','712-880-1155','GabrielaJ23@alanath.org','2021-09-10 13:14:00','script','2021-09-10 17:14:00','script',103,'GabrielaJ23','80859e092f3c49a313fa181e1bf0e98fda85e86986785ea05c370aee834b5a8b','2530c12'),(3,'Nancy Winters','4947 Courtright Street','58577','701-460-9506','NancyW97@alanath.ord','2021-09-10 13:14:00','script','2021-09-10 17:14:00','script',52,'NancyW97','d75827baad5d73baf9697d37c1316e019c852d676bb29cbce45cc3897c1ee825','73c6c3b2'),(4,'Douglas Villegas','3934 Romrog Way','68801','308-201-5702','DouglasV12@alanath.org','2023-01-31 16:29:00','admin','2023-02-01 08:36:00','admin',12,'DouglasV12','1c2a7fa57ed4619bacaa1116f408d6f7f9f4a3cd30539cd86b9199f509cc71c0','48533e64'),(5,'Shivam Thomas','4910 Cedar Lane','2143','617-629-5901','ShivamT76@alanath.org','2023-02-01 01:34:00','admin','2023-02-01 01:34:00','admin',23,'ShivamT76','fa12d88316bfceff2bcc382503d089a00bcecee84661d599ffc8d7d68a095ef1','64a294a6');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-10 19:32:30
+-- Dump completed on 2025-03-08 19:38:52

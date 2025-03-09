@@ -18,11 +18,12 @@ public class Employee extends Person {
      * It is unique.
      */
     private final String Username;
-
+    private final String saltedHash;
+    private final String salt;
     /**
      * A String containing the User's password.
      */
-    private final String Password;
+   // private final String Password;
 
     /**
      * This method instantiates the employee object by using the superclass' initiation method.
@@ -39,21 +40,30 @@ public class Employee extends Person {
      * @param last_Updated_By the name of whoever last updated the person
      * @param region_ID       the person's region's ID
      * @param username        the employee's username
-     * @param password        the employee's password
+     * @param saltedHash      the sha256 hash value of the employee's password with salt
+     * @param salt            the salt for use with sha256 hash for this employee
      */
-    public Employee(int ID, String name, String address, String postal_Code, String phone, String email, LocalDateTime create_Date, String created_By, Timestamp last_Update, String last_Updated_By, int region_ID, String username, String password) {
+    public Employee(int ID, String name, String address, String postal_Code, String phone, String email, LocalDateTime create_Date, String created_By, Timestamp last_Update, String last_Updated_By, int region_ID, String username, String saltedHash, String salt) {
         super(ID, name, address, postal_Code, phone, email, create_Date, created_By, last_Update, last_Updated_By, region_ID);
         Username = username;
-        Password = password;
+        this.salt = salt;
+        this.saltedHash = saltedHash;
+      //  Password = password;
     }
 
     public String getUsername() {
         return Username;
     }
-
-    public String getPassword() {
-        return Password;
+    public String getSaltedHash() {
+        return saltedHash;
     }
+    public String getSalt() {
+        return salt;
+    }
+
+//    public String getPassword() {
+//        return Password;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,6 +71,6 @@ public class Employee extends Person {
         if (!(o instanceof Employee)) return false;
         if (!super.equals(o)) return false;
         Employee employee = (Employee) o;
-        return Username.equals(employee.Username) && Password.equals(employee.Password);
+        return Username.equals(employee.Username);
     }
 }

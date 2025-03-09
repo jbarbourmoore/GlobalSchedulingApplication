@@ -2,6 +2,7 @@ package DatabaseAccess;
 
 import DataStructures.Employee;
 import Main.DatabaseConnectionManager;
+import Main.HelperMethods;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -37,7 +38,7 @@ public class EmployeeDatabaseAccess {
             Timestamp last_Update = resultSet.getTimestamp("Last_Update");
             String last_Updated_By = resultSet.getString("Last_Updated_By");
             int region_ID = resultSet.getInt("Region_ID");
-            Employee employee = new Employee(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"), resultSet.getString("Password"));
+            Employee employee = new Employee(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"), resultSet.getString("Salted_Hash"), resultSet.getString("Salt"));
             usersObservableList.add(employee);
         }
         return usersObservableList;
@@ -62,7 +63,7 @@ public class EmployeeDatabaseAccess {
             Timestamp last_Update = resultSet.getTimestamp("Last_Update");
             String last_Updated_By = resultSet.getString("Last_Updated_By");
             int region_ID = resultSet.getInt("Region_ID");
-            employee = new Employee(employee_ID, resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"), resultSet.getString("Password"));
+            employee = new Employee(employee_ID, resultSet.getString("Name"), resultSet.getString("Address"), resultSet.getString("Postal_Code"), resultSet.getString("Phone"), resultSet.getString("Email"), create_Date, created_By, last_Update, last_Updated_By, region_ID, resultSet.getString("User_Name"),resultSet.getString("Salted_Hash"), resultSet.getString("Salt"));
         }
         return employee;
     }
@@ -75,12 +76,16 @@ public class EmployeeDatabaseAccess {
      * @return boolean that is true if the credentials are valid
      */
     public static boolean checkUserAndPassword(String username, String password) {
-        String stringQuery = "SELECT * FROM employees WHERE user_name = '" + username + "' AND password = '" + password + "'";
+        String stringQuery = "SELECT User_Name, Salted_Hash, Salt FROM employees WHERE User_Name = '" + username +"'"           ;
         try {
             PreparedStatement preparedStatement = DatabaseConnectionManager.getConnection().prepareStatement(stringQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                if (resultSet.getString("User_Name").equals(username) && resultSet.getString("Password").equals(password)) {
+                String retrievedUsername = resultSet.getString("User_Name");
+                String retrievedSaltedHash = resultSet.getString("Salted_Hash");
+                String salt = resultSet.getString("Salt");
+                String generatedSaltedHash = HelperMethods.generateHash(password, salt);
+                if (retrievedUsername.equals(username) && retrievedSaltedHash.equals(generatedSaltedHash)) {
                     return true;
                 }
             }
